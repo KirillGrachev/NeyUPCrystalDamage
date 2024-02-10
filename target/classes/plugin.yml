@@ -1,0 +1,4 @@
+name: NeyUPCrystalDamage
+version: '1.0.1'
+main: org.ney.neyupcrystaldamage.NeyUPCrystalDamage
+api-version: 1.16
