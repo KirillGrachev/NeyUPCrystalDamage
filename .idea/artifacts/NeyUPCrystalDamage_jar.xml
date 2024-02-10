@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="NeyUPCrystalDamage:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/NeyUPCrystalDamage_jar</output-path>
+    <root id="archive" name="NeyUPCrystalDamage.jar">
+      <element id="module-output" name="NeyUPCrystalDamage" />
+    </root>
+  </artifact>
+</component>
