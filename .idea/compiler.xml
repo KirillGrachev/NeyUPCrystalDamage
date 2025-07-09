@@ -9,5 +9,12 @@
         <module name="NeyUPCrystalDamage" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="bukkit-1_12_R1" target="16" />
+      <module name="bukkit-1_16_R3" target="16" />
+      <module name="bukkit-1_19_R3" target="16" />
+      <module name="core" target="1.8" />
+      <module name="plugin" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
