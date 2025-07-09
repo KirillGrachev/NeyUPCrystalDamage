@@ -1,6 +1,6 @@
 org\ney\crystal_damage\event\EventDispatcher.class
+org\ney\crystal_damage\listener\DamageListener.class
 org\ney\crystal_damage\service\DamageCalculationService.class
-org\ney\crystal_damage\listener\CrystalDamageListener.class
 org\ney\crystal_damage\util\HexColorUtil.class
 org\ney\crystal_damage\service\DamageValidationService.class
 org\ney\crystal_damage\service\ExperienceDropService.class

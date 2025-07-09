@@ -6,7 +6,7 @@
 
     <groupId>org.ney</groupId>
     <artifactId>NeyUPCrystalDamage</artifactId>
-    <version>1.0.2-STABLE</version>
+    <version>1.0.4-STABLE</version>
     <packaging>jar</packaging>
 
     <name>NeyUPCrystalDamage</name>
