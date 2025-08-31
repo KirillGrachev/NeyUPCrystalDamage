@@ -14,10 +14,6 @@ import org.ney.crystal_damage.service.DamageCalculationService;
 import org.ney.crystal_damage.service.DamageValidationService;
 import org.ney.crystal_damage.service.ExperienceDropService;
 
-/**
- * Слушатель событий повреждений кристалла.
- * Перехватывает попытки нанесения урона игрокам через эндер-кристаллы.
- */
 public class DamageListener implements Listener {
 
     private final ConfigManager configManager;
@@ -32,11 +28,6 @@ public class DamageListener implements Listener {
         this.experienceDropService = new ExperienceDropService();
     }
 
-    /**
-     * Обрабатывает нанесение урона от эндер-кристалла.
-     *
-     * @param event событие EntityDamageByEntityEvent
-     */
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onEntityDamageByEntity(@NotNull EntityDamageByEntityEvent event) {
 
