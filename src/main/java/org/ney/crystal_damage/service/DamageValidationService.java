@@ -8,11 +8,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class DamageValidationService {
 
-    /**
-     * Проверяет, является ли урон корректным:
-     * - Источник урона — эндер-кристалл
-     * - Цель — игрок
-     */
     public boolean isCrystalDamageValid(@NotNull EntityDamageByEntityEvent event,
                                         Entity damaged) {
 
