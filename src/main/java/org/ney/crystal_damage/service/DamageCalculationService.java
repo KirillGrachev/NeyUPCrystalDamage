@@ -10,9 +10,6 @@ public class DamageCalculationService {
         this.configManager = configManager;
     }
 
-    /**
-     * Рассчитывает финальный урон по формуле: base * multiplier
-     */
     public double calculateDamage(double baseDamage) {
         return baseDamage * configManager.getDamageMultiplier();
     }
