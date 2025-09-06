@@ -3,6 +3,7 @@ Do you want to make End battles more intense? Create unique mini-games where cry
 It is ideal for servers with increased difficulty, PvP arenas, mini-games, and RPG modes.
 
 **Key features​**
+
 Increase End Crystal damage by %.
 Experience points for players - encourage strategic use of crystals.
 Colorful chat messages with HEX support.
@@ -11,6 +12,7 @@ Compatible with Spigot, Paper, Bukkit (1.13+).
 Optimized for low load.
 
 **🎮 Examples of use​**
+
 PvP server: Increase crystal damage by 200% to make End game battles more dramatic.
 Crystal Arena mini-game: Players gain experience for every hit - whoever deals more damage wins.
 
