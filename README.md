@@ -16,7 +16,15 @@ It is ideal for servers with increased difficulty, PvP arenas, mini-games, and R
 - PvP server: Increase crystal damage by 200% to make End game battles more dramatic.
 - Crystal Arena mini-game: Players gain experience for every hit - whoever deals more damage wins.
 
-**⚙️ Configuration (config.yml)​**
+**⚙️ Installation**
+1. Stop your server.
+2. Download `NeyUPCrystalDamage.jar`.
+3. Move the file to the `plugins` folder.
+4. Start the server — the plugin will generate `config.yml`.
+5. Configure the settings (see below).
+6. Restart the server.
+
+**Configuration (config.yml)​**
 <img width="844" height="618" alt="image" src="https://github.com/user-attachments/assets/9db269f5-bd2e-473e-95ab-90346979d890" />
 
 **Usage example:**
