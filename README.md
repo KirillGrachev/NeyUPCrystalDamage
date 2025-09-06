@@ -25,12 +25,15 @@ It is ideal for servers with increased difficulty, PvP arenas, mini-games, and R
 **❓ FAQ**
 
 **Q: Is the plugin compatible with other protection systems?**
+
 A: Yes, NeyUPCrystalDamage works on top of the standard damage mechanism and is compatible with most plugins.
 
 **Q: Is it possible to disable experience or chat?**
+
 A: Yes, all features can be enabled/disabled in config.yml.
 
 **Q: Does the plugin support 1.20.4?**
+
 A: Yes, it has been tested on Paper 1.20.4.
 
 **PS: If you like the plugin, give it a star on GitHub (Clickable):**
