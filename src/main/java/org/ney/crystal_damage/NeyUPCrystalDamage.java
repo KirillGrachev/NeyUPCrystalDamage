@@ -4,19 +4,28 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.ney.crystal_damage.config.ConfigManager;
 import org.ney.crystal_damage.event.EventDispatcher;
 import org.ney.crystal_damage.listener.DamageListener;
+import org.ney.crystal_damage.service.MultiplierService;
 
 public class NeyUPCrystalDamage extends JavaPlugin {
 
     private ConfigManager configManager;
+    private MultiplierService multiplierService;
 
     @Override
     public void onEnable() {
 
         this.configManager = new ConfigManager(this);
 
+        this.multiplierService = new MultiplierService(
+                configManager
+        );
+
         // Регистрация слушателей
         new EventDispatcher(this).registerEvents(
-                new DamageListener(configManager)
+                new DamageListener(
+                        configManager,
+                        multiplierService
+                )
         );
 
         getLogger().info("NeyUPCrystalDamage успешно запущен!");
