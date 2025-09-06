@@ -14,6 +14,7 @@ Optimized for low load.
 **🎮 Examples of use​**
 
 PvP server: Increase crystal damage by 200% to make End game battles more dramatic.
+
 Crystal Arena mini-game: Players gain experience for every hit - whoever deals more damage wins.
 
 **⚙️ Configuration (config.yml)​**
