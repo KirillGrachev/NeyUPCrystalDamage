@@ -4,18 +4,17 @@ It is ideal for servers with increased difficulty, PvP arenas, mini-games, and R
 
 **Key features​**
 
-Increase End Crystal damage by %.
-Experience points for players - encourage strategic use of crystals.
-Colorful chat messages with HEX support.
-Flexible configuration - everything is customizable through a simple config.yml.
-Compatible with Spigot, Paper, Bukkit (1.13+).
-Optimized for low load.
+- Increase End Crystal damage by %.
+- Experience points for players - encourage strategic use of crystals.
+- Colorful chat messages with HEX support.
+- Flexible configuration - everything is customizable through a simple config.yml.
+- Compatible with Spigot, Paper, Bukkit (1.13+).
+- Optimized for low load.
 
 **🎮 Examples of use​**
 
-PvP server: Increase crystal damage by 200% to make End game battles more dramatic.
-
-Crystal Arena mini-game: Players gain experience for every hit - whoever deals more damage wins.
+- PvP server: Increase crystal damage by 200% to make End game battles more dramatic.
+- Crystal Arena mini-game: Players gain experience for every hit - whoever deals more damage wins.
 
 **⚙️ Configuration (config.yml)​**
 <img width="844" height="618" alt="image" src="https://github.com/user-attachments/assets/9db269f5-bd2e-473e-95ab-90346979d890" />
