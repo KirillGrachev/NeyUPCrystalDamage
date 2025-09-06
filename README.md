@@ -37,6 +37,6 @@ A: Yes, all features can be enabled/disabled in config.yml.
 A: Yes, it has been tested on Paper 1.20.4.
 
 **PS: If you like the plugin, give it a star on GitHub (Clickable):**
-<a href="https://github.com/KirillGrachev/NeyAntiSkull/" target="_blank" rel="noopener noreferrer">
-  <img width="768" height="512" alt="NeyAntiSkull GitHub Repository" src="https://github.com/user-attachments/assets/071ca426-f1b4-426d-89b5-c449a31f0c64" />
+<a href="https://github.com/KirillGrachev/NeyUPCrystalDamage" target="_blank" rel="noopener noreferrer">
+  <img width="768" height="512" alt="NeyUPCrystalDamage GitHub Repository" src="https://github.com/user-attachments/assets/071ca426-f1b4-426d-89b5-c449a31f0c64" />
 </a>
