@@ -1,1 +1,5 @@
-<img width="3802" height="8836" alt="NeyUPCrystalDamage" src="https://github.com/user-attachments/assets/19c11e5e-3bd2-4105-bd4e-7eabd6fa1fca" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/1e664c81-be64-4337-8f71-9ec63e7738d6"
+       alt="NeyUPCrystalDamage"
+       width="100%">
+</p>
