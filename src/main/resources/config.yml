@@ -1,28 +1,39 @@
-# _   _            _   _ ____   ____                _        _ ____
-#| \ | | ___ _   _| | | |  _ \ / ___|_ __ _   _ ___| |_ __ _| |  _ \  __ _ _ __ ___   __ _  __ _  ___
-#|  \| |/ _ \ | | | | | | |_) | |   | '__| | | / __| __/ _` | | | | |/ _` | '_ ` _ \ / _` |/ _` |/ _ \
-#| |\  |  __/ |_| | |_| |  __/| |___| |  | |_| \__ \ || (_| | | |_| | (_| | | | | | | (_| | (_| |  __/
-#|_| \_|\___|\__, |\___/|_|    \____|_|   \__, |___/\__\__,_|_|____/ \__,_|_| |_| |_|\__,_|\__, |\___|
-#            |___/                        |___/                                            |___/
-
-#Разработчик - https://t.me/NeyOff
-#Специально для spigotmc
+# NeyUPCrystalDamage - multiplier for the damage an end crystal deals to players.
+#
+# PLACEHOLDERS - work in every text of this file:
+#
+#   Damage
+#     {base_damage}       vanilla damage of the hit, before the multiplier
+#     {damage}            final damage dealt to the player
+#     {multiplier}        settings.multiplier as it is applied right now
+#     {prefix}            messages.prefix
+#
+# HEX colors are supported everywhere: #RRGGBB and &#RRGGBB.
 
 settings:
 
-  # Множитель урона (1.0 = 100%, 4.0 = 400%)
+  enabled: true # Master switch. If false - the plugin does nothing at all
+
+  # Damage multiplier (1.0 = 100%, 4.0 = 400%, 0.1 = 10%).
+  # Zero cancels the crystal hit entirely instead of dealing no damage.
   multiplier: 0.1
 
 permissions:
-  enabled: false
-  bypass-permission: "crystal.damage.bypass"
+
+  enabled: false # Enable the permission system: the bypass node below becomes active
+
+  # Players with this node take vanilla crystal damage, the multiplier is not applied
+  bypass: "crystal.damage.bypass"
 
 messages:
-  message-before-damage:
-    # Включить сообщение
+
+  enabled: true # Master switch for all plugin messages
+  prefix: "" # Substituted into {prefix} inside the texts (empty = no prefix)
+
+  # Sent to the player right before the multiplied damage is applied
+  message_before_damage:
     enabled: true
-    # Текст с цветами (&a) и HEX (#FF0000)
     text:
       - ""
-      - " #5dff52[⛄] &fБум! В следующий раз будьте осторожнее! "
+      - " #5dff52[⛄] &fBoom! Be more careful next time! "
       - ""

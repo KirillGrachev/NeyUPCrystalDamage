@@ -2,15 +2,25 @@ package eu.neydev.upcrystaldamage.util;
 
 import org.bukkit.ChatColor;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * Утилита для обработки HEX-цветов в строках.
- * Конвертирует формат #RRGGBB в &x&R&R&G&G&B&B.
+ * Поддерживаются форматы #RRGGBB и &#RRGGBB - оба приводятся к нативным цветовым кодам.
  */
-public class HexColorUtil {
+public final class HexColorUtil {
+
+    /**
+     * Первая группа - необязательный символ-префикс (& или §),
+     * чтобы &#RRGGBB не оставлял в строке лишнего амперсанда.
+     */
+    private static final Pattern HEX_PATTERN = Pattern.compile("([&§])?#[a-fA-F0-9]{6}");
+
+    private HexColorUtil() {
+    }
 
     /**
      * Преобразует HEX-коды в строке в Minecraft-формат.
@@ -18,64 +28,69 @@ public class HexColorUtil {
      * @param text исходная строка с HEX-кодами
      * @return строка с преобразованными цветовыми кодами
      */
-    public static @NotNull String color(String text) {
+    public static @NotNull String color(@Nullable String text) {
 
         if (text == null || text.isEmpty()) {
             return "";
         }
 
-        Pattern pattern = Pattern.compile("#[a-fA-F0-9]{6}");
-        Matcher matcher = pattern.matcher(text);
+        Matcher matcher = HEX_PATTERN.matcher(text);
+
+        if (!matcher.find()) {
+            return ChatColor.translateAlternateColorCodes('&', text);
+        }
 
         StringBuilder result = new StringBuilder();
         int lastEnd = 0;
 
-        while (matcher.find()) {
-
-            String hexCode = matcher.group();
-
-            if (hexCode.length() != 7 || !isValidHexCode(hexCode)) {
-                continue;
-            }
+        do {
 
             result.append(text, lastEnd, matcher.start());
+            result.append(toLegacyHex(matcher.group()));
 
-            // Преобразуем #RRGGBB -> &x&R&R&G&G&B&B
-            StringBuilder replacement = new StringBuilder("&x");
-            for (int i = 1; i < hexCode.length(); i++) {
-                replacement.append("&").append(hexCode.charAt(i));
-            }
-
-            result.append(replacement);
             lastEnd = matcher.end();
 
-        }
+        } while (matcher.find());
 
         result.append(text.substring(lastEnd));
-        return ChatColor.translateAlternateColorCodes('&',
-                result.toString());
+        return ChatColor.translateAlternateColorCodes('&', result.toString());
 
     }
 
     /**
-     * Проверяет валидность HEX-кода.
+     * Убирает все цветовые и форматирующие коды из строки.
      *
-     * @param code строка с HEX-кодом (#RRGGBB)
-     * @return true если код валиден, false иначе
+     * @param text исходная строка
+     * @return текст без форматирования
      */
-    private static boolean isValidHexCode(@NotNull String code) {
+    public static @NotNull String strip(@Nullable String text) {
 
-        for (int i = 1; i < code.length(); i++) {
-
-            char c = code.charAt(i);
-            if (!Character.isDigit(c) && (c < 'a' || c > 'f')
-                    && (c < 'A' || c > 'F')) {
-                return false;
-            }
-
+        if (text == null || text.isEmpty()) {
+            return "";
         }
 
-        return true;
+        String stripped = ChatColor.stripColor(color(text));
+        return stripped == null ? "" : stripped;
 
     }
+
+    /**
+     * Преобразует #RRGGBB (с префиксом или без) в &x&R&R&G&G&B&B.
+     *
+     * @param match найденное совпадение вместе с необязательным префиксом
+     * @return строка в формате legacy
+     */
+    private static @NotNull String toLegacyHex(@NotNull String match) {
+
+        int hashIndex = match.indexOf('#');
+        StringBuilder replacement = new StringBuilder("&x");
+
+        for (int i = hashIndex + 1; i < match.length(); i++) {
+            replacement.append('&').append(match.charAt(i));
+        }
+
+        return replacement.toString();
+
+    }
+
 }

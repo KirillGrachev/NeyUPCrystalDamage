@@ -1,5 +1,8 @@
 package eu.neydev.upcrystaldamage.listener;
 
+import eu.neydev.upcrystaldamage.config.CrystalDamageConfig;
+import eu.neydev.upcrystaldamage.config.type.MessageKey;
+import eu.neydev.upcrystaldamage.service.MultiplierService;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -9,48 +12,63 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.jetbrains.annotations.NotNull;
 
-import eu.neydev.upcrystaldamage.config.ConfigManager;
-import eu.neydev.upcrystaldamage.service.MultiplierService;
-
+/**
+ * Слушатель урона кристалла Края по игроку.
+ *
+ * Приоритет HIGHEST с ignoreCancelled: решение принимается после плагинов,
+ * меняющих урон (защита регионов, античит, балансировка PvP), но до MONITOR,
+ * который читают логгеры и статистика, - иначе они увидели бы ванильное
+ * значение. Уже отмененный удар не пересчитывается вовсе.
+ */
 public class DamageListener implements Listener {
 
-    private final ConfigManager configManager;
+    private final CrystalDamageConfig config;
     private final MultiplierService multiplierService;
 
-    public DamageListener(@NotNull ConfigManager configManager,
+    public DamageListener(@NotNull CrystalDamageConfig config,
                           @NotNull MultiplierService multiplierService) {
-        this.configManager = configManager;
+        this.config = config;
         this.multiplierService = multiplierService;
     }
 
+    /**
+     * Пересчитывает урон кристалла по игроку.
+     *
+     * @param event событие урона сущности другой сущностью
+     */
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onEntityDamageByEntity(@NotNull EntityDamageByEntityEvent event) {
+
+        if (!config.isPluginEnabled()) {
+            return;
+        }
 
         Entity damager = event.getDamager();
         Entity damaged = event.getEntity();
 
-        if (damager.getType() != EntityType.END_CRYSTAL
-                || !(damaged instanceof Player)) {
+        if (damager.getType() != EntityType.END_CRYSTAL || !(damaged instanceof Player)) {
             return;
         }
 
         Player player = (Player) damaged;
 
-        if (configManager.isMessageEnabled()) {
-            configManager.getMessageLines().forEach(player::sendMessage);
+        // Предупреждение уходит до расчета урона: игрок видит его и тогда,
+        // когда удар в итоге отменен нулевым множителем
+        for (String line : config.getMessages(MessageKey.MESSAGE_BEFORE_DAMAGE)) {
+            player.sendMessage(line);
         }
 
-        double baseDamage = event.getDamage();
-        double finalDamage = multiplierService.calculateDamage(baseDamage, damager);
+        double finalDamage = multiplierService.calculateDamage(event.getDamage(), damager);
 
-        if (finalDamage == 0.0) {
-
+        // Ноль отменяет удар целиком, а не оставляет событие с нулевым уроном:
+        // иначе смерть от кристалла продолжает числиться смертью от взрыва
+        if (finalDamage == 0.0D) {
             event.setCancelled(true);
             return;
-
         }
 
         event.setDamage(finalDamage);
 
     }
+
 }
