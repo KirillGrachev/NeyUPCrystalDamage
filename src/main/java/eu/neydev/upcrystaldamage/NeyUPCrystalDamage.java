@@ -1,10 +1,10 @@
-package org.ney.crystal_damage;
+package eu.neydev.upcrystaldamage;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import org.ney.crystal_damage.config.ConfigManager;
-import org.ney.crystal_damage.event.EventDispatcher;
-import org.ney.crystal_damage.listener.DamageListener;
-import org.ney.crystal_damage.service.MultiplierService;
+import eu.neydev.upcrystaldamage.config.ConfigManager;
+import eu.neydev.upcrystaldamage.event.EventDispatcher;
+import eu.neydev.upcrystaldamage.listener.DamageListener;
+import eu.neydev.upcrystaldamage.service.MultiplierService;
 
 public class NeyUPCrystalDamage extends JavaPlugin {
 
@@ -28,13 +28,13 @@ public class NeyUPCrystalDamage extends JavaPlugin {
                 )
         );
 
-        getLogger().info("NeyUPCrystalDamage успешно запущен!");
+        getLogger().info("NeyUPCrystalDamage started successfully.");
 
     }
 
     @Override
     public void onDisable() {
-        getLogger().info("NeyUPCrystalDamage остановлен!");
+        getLogger().info("NeyUPCrystalDamage stopped.");
     }
 
     public ConfigManager getConfigManager() {

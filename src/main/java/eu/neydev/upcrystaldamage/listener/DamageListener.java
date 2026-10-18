@@ -1,4 +1,4 @@
-package org.ney.crystal_damage.listener;
+package eu.neydev.upcrystaldamage.listener;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -9,8 +9,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.jetbrains.annotations.NotNull;
 
-import org.ney.crystal_damage.config.ConfigManager;
-import org.ney.crystal_damage.service.MultiplierService;
+import eu.neydev.upcrystaldamage.config.ConfigManager;
+import eu.neydev.upcrystaldamage.service.MultiplierService;
 
 public class DamageListener implements Listener {
 
@@ -29,7 +29,7 @@ public class DamageListener implements Listener {
         Entity damager = event.getDamager();
         Entity damaged = event.getEntity();
 
-        if (damager.getType() != EntityType.ENDER_CRYSTAL
+        if (damager.getType() != EntityType.END_CRYSTAL
                 || !(damaged instanceof Player)) {
             return;
         }

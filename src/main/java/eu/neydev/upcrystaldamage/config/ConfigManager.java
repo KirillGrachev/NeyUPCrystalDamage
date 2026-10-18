@@ -1,10 +1,10 @@
-package org.ney.crystal_damage.config;
+package eu.neydev.upcrystaldamage.config;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.jetbrains.annotations.NotNull;
-import org.ney.crystal_damage.NeyUPCrystalDamage;
-import org.ney.crystal_damage.util.HexColorUtil;
+import eu.neydev.upcrystaldamage.NeyUPCrystalDamage;
+import eu.neydev.upcrystaldamage.util.HexColorUtil;
 
 import java.io.File;
 import java.util.List;

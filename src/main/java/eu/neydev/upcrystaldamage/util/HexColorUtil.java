@@ -1,4 +1,4 @@
-package org.ney.crystal_damage.util;
+package eu.neydev.upcrystaldamage.util;
 
 import org.bukkit.ChatColor;
 import org.jetbrains.annotations.NotNull;

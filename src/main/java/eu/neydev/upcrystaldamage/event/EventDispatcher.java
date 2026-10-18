@@ -1,10 +1,10 @@
-package org.ney.crystal_damage.event;
+package eu.neydev.upcrystaldamage.event;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.jetbrains.annotations.NotNull;
 
-import org.ney.crystal_damage.NeyUPCrystalDamage;
+import eu.neydev.upcrystaldamage.NeyUPCrystalDamage;
 
 public class EventDispatcher {
 

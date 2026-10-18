@@ -1,10 +1,10 @@
-package org.ney.crystal_damage.service;
+package eu.neydev.upcrystaldamage.service;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import org.ney.crystal_damage.config.ConfigManager;
+import eu.neydev.upcrystaldamage.config.ConfigManager;
 
 public class MultiplierService {
 
