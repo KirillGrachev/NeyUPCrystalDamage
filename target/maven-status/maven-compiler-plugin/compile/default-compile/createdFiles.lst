@@ -1,6 +1,0 @@
-org\ney\crystal_damage\event\EventDispatcher.class
-org\ney\crystal_damage\listener\DamageListener.class
-org\ney\crystal_damage\util\HexColorUtil.class
-org\ney\crystal_damage\NeyUPCrystalDamage.class
-org\ney\crystal_damage\service\MultiplierService.class
-org\ney\crystal_damage\config\ConfigManager.class
