@@ -2,7 +2,7 @@ package eu.neydev.upcrystaldamage;
 
 import eu.neydev.upcrystaldamage.config.ConfigManager;
 import eu.neydev.upcrystaldamage.event.EventDispatcher;
-import eu.neydev.upcrystaldamage.listener.DamageListener;
+import eu.neydev.upcrystaldamage.listener.CrystalDamageListener;
 import eu.neydev.upcrystaldamage.service.ConsoleService;
 import eu.neydev.upcrystaldamage.service.MessageService;
 import eu.neydev.upcrystaldamage.service.MultiplierService;
@@ -35,7 +35,7 @@ public class NeyUPCrystalDamage extends JavaPlugin {
 
         // Регистрация слушателей
         new EventDispatcher(this).registerEvents(
-                new DamageListener(configManager, multiplierService, messageService)
+                new CrystalDamageListener(this, configManager, multiplierService, messageService)
         );
 
         getLogger().info("NeyUPCrystalDamage started successfully.");
