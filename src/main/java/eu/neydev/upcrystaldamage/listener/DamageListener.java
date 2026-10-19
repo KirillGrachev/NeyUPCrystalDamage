@@ -2,6 +2,7 @@ package eu.neydev.upcrystaldamage.listener;
 
 import eu.neydev.upcrystaldamage.config.CrystalDamageConfig;
 import eu.neydev.upcrystaldamage.config.type.MessageKey;
+import eu.neydev.upcrystaldamage.model.DamageDecision;
 import eu.neydev.upcrystaldamage.service.MessageService;
 import eu.neydev.upcrystaldamage.service.MultiplierService;
 import org.bukkit.entity.Entity;
@@ -60,16 +61,14 @@ public class DamageListener implements Listener {
         // когда удар в итоге отменен нулевым множителем
         messageService.send(player, MessageKey.MESSAGE_BEFORE_DAMAGE);
 
-        double finalDamage = multiplierService.calculateDamage(event.getDamage(), damager);
+        DamageDecision decision = multiplierService.decide(event.getDamage(), player);
 
-        // Ноль отменяет удар целиком, а не оставляет событие с нулевым уроном:
-        // иначе смерть от кристалла продолжает числиться смертью от взрыва
-        if (finalDamage == 0.0D) {
+        if (decision.cancelled()) {
             event.setCancelled(true);
             return;
         }
 
-        event.setDamage(finalDamage);
+        event.setDamage(decision.finalDamage());
 
     }
 

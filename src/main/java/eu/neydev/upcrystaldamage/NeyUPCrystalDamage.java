@@ -6,6 +6,7 @@ import eu.neydev.upcrystaldamage.listener.DamageListener;
 import eu.neydev.upcrystaldamage.service.ConsoleService;
 import eu.neydev.upcrystaldamage.service.MessageService;
 import eu.neydev.upcrystaldamage.service.MultiplierService;
+import eu.neydev.upcrystaldamage.service.PermissionService;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -20,6 +21,7 @@ public class NeyUPCrystalDamage extends JavaPlugin {
     private ConsoleService consoleService;
     private ConfigManager configManager;
     private MessageService messageService;
+    private PermissionService permissionService;
     private MultiplierService multiplierService;
 
     @Override
@@ -28,7 +30,8 @@ public class NeyUPCrystalDamage extends JavaPlugin {
         this.consoleService = new ConsoleService(this);
         this.configManager = new ConfigManager(this, consoleService);
         this.messageService = new MessageService(configManager);
-        this.multiplierService = new MultiplierService(configManager);
+        this.permissionService = new PermissionService(configManager);
+        this.multiplierService = new MultiplierService(configManager, permissionService);
 
         // Регистрация слушателей
         new EventDispatcher(this).registerEvents(
