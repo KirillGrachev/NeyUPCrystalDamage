@@ -2,6 +2,7 @@ package eu.neydev.upcrystaldamage.listener;
 
 import eu.neydev.upcrystaldamage.config.CrystalDamageConfig;
 import eu.neydev.upcrystaldamage.config.type.MessageKey;
+import eu.neydev.upcrystaldamage.service.MessageService;
 import eu.neydev.upcrystaldamage.service.MultiplierService;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -24,11 +25,14 @@ public class DamageListener implements Listener {
 
     private final CrystalDamageConfig config;
     private final MultiplierService multiplierService;
+    private final MessageService messageService;
 
     public DamageListener(@NotNull CrystalDamageConfig config,
-                          @NotNull MultiplierService multiplierService) {
+                          @NotNull MultiplierService multiplierService,
+                          @NotNull MessageService messageService) {
         this.config = config;
         this.multiplierService = multiplierService;
+        this.messageService = messageService;
     }
 
     /**
@@ -54,9 +58,7 @@ public class DamageListener implements Listener {
 
         // Предупреждение уходит до расчета урона: игрок видит его и тогда,
         // когда удар в итоге отменен нулевым множителем
-        for (String line : config.getMessages(MessageKey.MESSAGE_BEFORE_DAMAGE)) {
-            player.sendMessage(line);
-        }
+        messageService.send(player, MessageKey.MESSAGE_BEFORE_DAMAGE);
 
         double finalDamage = multiplierService.calculateDamage(event.getDamage(), damager);
 
