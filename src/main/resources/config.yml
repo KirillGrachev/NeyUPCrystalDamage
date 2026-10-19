@@ -6,6 +6,12 @@
 #     {base_damage}       vanilla damage of the hit, before the multiplier
 #     {damage}            final damage dealt to the player
 #     {multiplier}        settings.multiplier as it is applied right now
+#
+#   Service (info, reload)
+#     {bypass}            bypass permission node (permissions.bypass)
+#     {bypass_state}      state_on / state_off word for permissions.enabled
+#     {version}           plugin version from plugin.yml
+#     {time}              reload time, ms
 #     {prefix}            messages.prefix
 #
 # HEX colors are supported everywhere: #RRGGBB and &#RRGGBB.
@@ -20,7 +26,7 @@ settings:
 
 permissions:
 
-  enabled: false # Enable the permission system: the bypass node below becomes active
+  enabled: false # Enable the permission system: command nodes become active, bypass starts working
 
   # Players with this node take vanilla crystal damage, the multiplier is not applied
   bypass: "crystal.damage.bypass"
@@ -30,6 +36,16 @@ messages:
   enabled: true # Master switch for all plugin messages
   prefix: "" # Substituted into {prefix} inside the texts (empty = no prefix)
 
+  # Word-fragments for the {bypass_state} placeholder inside info (not standalone
+  # messages): /crystaldamage info assembles the line "Bypass: <state_on|state_off>"
+  state_on:
+    enabled: true
+    text: "&aenabled"
+
+  state_off:
+    enabled: true
+    text: "&cdisabled"
+
   # Sent to the player right before the multiplied damage is applied
   message_before_damage:
     enabled: true
@@ -37,3 +53,22 @@ messages:
       - ""
       - " #5dff52[⛄] &fBoom! Be more careful next time! "
       - ""
+
+  no_permission:
+    enabled: true
+    text: "{prefix}&#ff6b6bYou do not have permission to do this."
+
+  usage:
+    enabled: true
+    text:
+      - "{prefix}&#8ce0ffNeyUPCrystalDamage commands:"
+      - "&f/crystaldamage reload &8- &7reload the configuration"
+      - "&f/crystaldamage info &8- &7current multiplier and bypass state"
+
+  reload:
+    enabled: true
+    text: "{prefix}&#9dff8cConfiguration reloaded &7({time} ms)."
+
+  info:
+    enabled: true
+    text: "{prefix}&7Version: &f{version}\n&7Multiplier: &f{multiplier}\n&7Bypass: &f{bypass_state} &8({bypass})"

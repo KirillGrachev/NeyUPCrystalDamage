@@ -5,3 +5,22 @@ api-version: '1.20'
 author: Ney
 description: End crystal damage multiplier with a warning before the hit
 website: https://t.me/NeyOff
+
+commands:
+  crystaldamage:
+    description: NeyUPCrystalDamage control command
+    usage: /crystaldamage <reload|info>
+    aliases: [ncd, upcrystaldamage]
+
+permissions:
+  crystaldamage.reload:
+    description: Reload the configuration and read the current multiplier
+    default: op
+  crystaldamage.admin:
+    description: All NeyUPCrystalDamage permissions
+    default: op
+    children:
+      crystaldamage.reload: true
+  crystal.damage.bypass:
+    description: Take vanilla end crystal damage, ignoring the multiplier
+    default: false
