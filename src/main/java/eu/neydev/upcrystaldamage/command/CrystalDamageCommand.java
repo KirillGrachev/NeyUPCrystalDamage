@@ -1,7 +1,6 @@
 package eu.neydev.upcrystaldamage.command;
 
 import eu.neydev.upcrystaldamage.config.type.MessageKey;
-import eu.neydev.upcrystaldamage.config.type.PermissionNode;
 import eu.neydev.upcrystaldamage.service.MessageService;
 import eu.neydev.upcrystaldamage.service.PermissionService;
 import org.bukkit.command.Command;
